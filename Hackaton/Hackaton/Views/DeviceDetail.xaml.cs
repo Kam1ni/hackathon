@@ -69,7 +69,7 @@ namespace Hackaton.Views
             get { return RedSlider; }
             set
             {
-                RedSlider = value;
+                RedSlider = this.FindByName<Slider>("SliderRed");
                 OnPropertyChanged();
 
             }
@@ -80,7 +80,7 @@ namespace Hackaton.Views
             get { return GreenSlider; }
             set
             {
-                GreenSlider = value;
+                GreenSlider = this.FindByName<Slider>("SliderGreen"); ;
                 OnPropertyChanged();
 
             }
@@ -91,7 +91,7 @@ namespace Hackaton.Views
             get { return BlueSlider; }
             set
             {
-                BlueSlider = value;
+                BlueSlider = this.FindByName<Slider>("SliderBlue"); ;
                 OnPropertyChanged();
 
             }
