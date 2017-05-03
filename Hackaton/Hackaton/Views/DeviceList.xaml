@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hackaton.Views.DeviceList"
+             BackgroundColor="White"
+             Title="Devices">
+
+  <StackLayout Orientation="Vertical" Padding="15, 25, 15, 25">
+    <Label Text="Select a device to connect with it." TextColor="Black" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" />
+
+    <ListView ItemsSource="{Binding Devices}" ItemSelected="OnItemSelected">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Label Text="{Binding Name}" TextColor="Black" FontSize="Medium" />
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+  
+</ContentPage>

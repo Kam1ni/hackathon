@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="Hackaton.Views.DeviceDetail"
+             Title="Details"
+             BackgroundColor="White">
+
+  <StackLayout Orientation="Vertical">
+    <chart:SfChart BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+      <chart:SfChart.Title>
+        <chart:ChartTitle Text="Bean details" TextColor="Black" />
+      </chart:SfChart.Title>
+
+      <chart:SfChart.Legend>
+        <chart:ChartLegend ToggleSeriesVisibility="True">
+          <chart:ChartLegend.LabelStyle>
+            <chart:ChartLegendLabelStyle TextColor="Black" />
+          </chart:ChartLegend.LabelStyle>
+        </chart:ChartLegend>
+      </chart:SfChart.Legend>
+
+      <chart:SfChart.PrimaryAxis>
+        <chart:CategoryAxis LabelRotationAngle="-45">
+          <chart:CategoryAxis.Title>
+            <chart:ChartAxisTitle Text="Time" TextColor="Black" />
+          </chart:CategoryAxis.Title>
+        </chart:CategoryAxis>
+      </chart:SfChart.PrimaryAxis>
+
+      <chart:SfChart.SecondaryAxis>
+        <chart:NumericalAxis>
+          <chart:NumericalAxis.Title>
+            <chart:ChartAxisTitle Text="Values" TextColor="Black" />
+          </chart:NumericalAxis.Title>
+        </chart:NumericalAxis>
+      </chart:SfChart.SecondaryAxis>
+
+      <chart:SfChart.ChartBehaviors>
+        <chart:ChartZoomPanBehavior EnablePanning="True" EnableDoubleTap="False" />
+
+        <chart:ChartTrackballBehavior ShowLabel="True" ShowLine="True">
+          <chart:ChartTrackballBehavior.MarkerStyle>
+            <chart:ChartTrackballMarkerStyle BorderColor="Black" ShowMarker="True" BorderWidth="4" Width="8" Height="8" Color="Transparent" />
+          </chart:ChartTrackballBehavior.MarkerStyle>
+        </chart:ChartTrackballBehavior>
+      </chart:SfChart.ChartBehaviors>
+
+      <chart:SfChart.Series>
+        <chart:FastLineSeries ItemsSource="{Binding XAxisSeries}" XBindingPath="Date" YBindingPath="AxisValue" Label="X-Axis" EnableDataPointSelection="False" Color="Red" />
+        <chart:FastLineSeries ItemsSource="{Binding YAxisSeries}" XBindingPath="Date" YBindingPath="AxisValue" Label="Y-Axis" EnableDataPointSelection="False" Color="Blue" />
+        <chart:FastLineSeries ItemsSource="{Binding ZAxisSeries}" XBindingPath="Date" YBindingPath="AxisValue" Label="Z-Axis" EnableDataPointSelection="False" Color="Green" />
+      </chart:SfChart.Series>
+    </chart:SfChart>
+  </StackLayout>
+  
+</ContentPage>
