@@ -94,7 +94,7 @@ namespace Hackaton.Views
 
                 // Next add this to the collection
                 // Since "Devices" is an ObservableCollection the UI will automatically be notified
-                // if added to prevent emty devices
+                // If added to prevent emty devices
                 if (!string.IsNullOrWhiteSpace(device.Name))
                     Devices.Add(device);
             });
