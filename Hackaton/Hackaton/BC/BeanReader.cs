@@ -3,6 +3,7 @@ using Hackaton.Managers;
 using Plugin.BluetoothLE;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Hackaton.BC
 {
