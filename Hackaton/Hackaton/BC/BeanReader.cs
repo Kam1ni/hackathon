@@ -94,7 +94,5 @@ namespace Hackaton.BC
             byte[] byteArrayZAxis = new byte[] { byteArray[4], byteArray[5] };
             return BitConverter.ToInt16(byteArrayZAxis, 0);
         }
-
-        
     }
 }

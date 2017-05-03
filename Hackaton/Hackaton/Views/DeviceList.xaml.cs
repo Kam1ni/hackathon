@@ -126,7 +126,7 @@ namespace Hackaton.Views
             {
                 // Don't do anything
             });
-            
+
             App.ConnectedDevice.NativeDevice.WhenStatusChanged().Subscribe(status =>
             {
                 if (status == ConnectionStatus.Connected)
