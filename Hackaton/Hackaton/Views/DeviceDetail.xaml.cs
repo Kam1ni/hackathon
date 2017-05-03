@@ -19,9 +19,10 @@ namespace Hackaton.Views
         private ObservableCollection<DataPointAccelerometer> _yAxisSeries;
         private ObservableCollection<DataPointAccelerometer> _zAxisSeries;
 
-        private Slider RedSlider;
-        private Slider GreenSlider;
-        private Slider BlueSlider;
+
+        public Slider RedSlider { get; set; }
+        public Slider GreenSlider { get; set; }
+        public Slider BlueSlider { get; set; }
 
         private CancellationTokenSource _cancellationTokenSource;
 
@@ -64,38 +65,7 @@ namespace Hackaton.Views
             }
         }
 
-        public Slider publicRedslider
-        {
-            get { return RedSlider; }
-            set
-            {
-                RedSlider = this.FindByName<Slider>("SliderRed");
-                OnPropertyChanged();
-
-            }
-        }
-
-        public Slider publicGreenslider
-        {
-            get { return GreenSlider; }
-            set
-            {
-                GreenSlider = this.FindByName<Slider>("SliderGreen"); ;
-                OnPropertyChanged();
-
-            }
-        }
-
-        public Slider publicBlueslider
-        {
-            get { return BlueSlider; }
-            set
-            {
-                BlueSlider = this.FindByName<Slider>("SliderBlue"); ;
-                OnPropertyChanged();
-
-            }
-        }
+        
 
 
         public DeviceDetail()
@@ -109,10 +79,19 @@ namespace Hackaton.Views
             ZAxisSeries = new ObservableCollection<DataPointAccelerometer>();
 
             RedSlider = this.FindByName<Slider>("SliderRed");
-            GreenSlider = this.FindByName<Slider>("SliderGreen");
             BlueSlider = this.FindByName<Slider>("SliderBlue");
+            GreenSlider = this.FindByName<Slider>("SliderGreen");
+
+            RedSlider.ValueChanged += Slider_ValueChanged;
+            BlueSlider.ValueChanged += Slider_ValueChanged;
+            GreenSlider.ValueChanged += Slider_ValueChanged;
 
             BindingContext = this;
+        }
+
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+          
         }
 
         protected override void OnAppearing()
