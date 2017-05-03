@@ -29,21 +29,5 @@ namespace Hackaton.DataAccess
                     .ToListAsync();
             });
         }
-
-        public void SendLedValues(int red, int green, int blue)
-        {
-            byte[] redB = BitConverter.GetBytes(red);
-            byte[] greenB = BitConverter.GetBytes(green);
-            byte[] blueB = BitConverter.GetBytes(blue);
-            if (BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(redB);
-                Array.Reverse(greenB);
-                Array.Reverse(blueB);
-            }
-            Debug.WriteLine(red);
-            Debug.WriteLine(redB);
-            App.ConnectedDevice.NativeDevice.BeginReliableWriteTransaction().Write(null, new byte[] { redB[0], greenB[0], blueB[0] });
-        }
     }
 }
