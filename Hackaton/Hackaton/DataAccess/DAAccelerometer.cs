@@ -28,5 +28,10 @@ namespace Hackaton.DataAccess
                     .ToListAsync();
             });
         }
+
+        public void SendLedValues(int red, int green, int blue)
+        {
+
+        }
     }
 }

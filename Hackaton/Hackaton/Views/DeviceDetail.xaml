@@ -53,7 +53,7 @@
                 </chart:SfChart.Series>
             </chart:SfChart>
 
-            <Label TextColor="Red"  Text="Red"></Label>
+            <Label  TextColor="Red"  Text="Red"></Label>
             <Slider Minimum="0" Maximum="255" Value="0" ></Slider>
             <Label TextColor="Green"  Text="Green"></Label>
             <Slider Minimum="0" Maximum="255" Value="0"></Slider>
