@@ -15,19 +15,19 @@ namespace Hackaton.BC
         {
             _characteristics = new List<IDisposable>();
         }
-        
+
         /// <summary>
         /// Read the scratch data from the Bean.
         /// </summary>
         public void ReadScratchData()
-        {   
+        {
             _characteristics = new List<IDisposable>();
-            
+
             var characteristicDiscover = App.ConnectedDevice.NativeDevice.WhenAnyCharacteristicDiscovered().Subscribe(characteristic =>
             {
                 if (characteristic.Service.Uuid != Constants.BeanServiceScratchDataUuid) return;
                 if (characteristic.Uuid != Constants.BeanCharacteristicScratchDataAccelerometerUuid) return;
-                
+
                 _characteristics.Add(characteristic.SubscribeToNotifications().Subscribe(result =>
                 {
                     ProcessAccelerometerByteArray(result.Data);
@@ -94,5 +94,7 @@ namespace Hackaton.BC
             byte[] byteArrayZAxis = new byte[] { byteArray[4], byteArray[5] };
             return BitConverter.ToInt16(byteArrayZAxis, 0);
         }
+
+        
     }
 }
