@@ -53,11 +53,11 @@
                 </chart:SfChart.Series>
             </chart:SfChart>
 
-            <Label>Red:</Label>
+            <Label Text="Red"></Label>
             <Slider></Slider>
-            <Label>Green:</Label>
+            <Label Text="Green"></Label>
             <Slider></Slider>
-            <Label>Blue:</Label>
+            <Label Text="Blue"></Label>
             <Slider></Slider>
         </StackLayout>
     </ScrollView>
