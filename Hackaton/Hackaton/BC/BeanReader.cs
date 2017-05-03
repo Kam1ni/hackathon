@@ -16,6 +16,10 @@ namespace Hackaton.BC
             _characteristics = new List<IDisposable>();
         }
 
+        private byte[] sendData;
+
+        private IGattCharacteristic sender;
+
         /// <summary>
         /// Read the scratch data from the Bean.
         /// </summary>
@@ -25,13 +29,20 @@ namespace Hackaton.BC
 
             var characteristicDiscover = App.ConnectedDevice.NativeDevice.WhenAnyCharacteristicDiscovered().Subscribe(characteristic =>
             {
-                if (characteristic.Service.Uuid != Constants.BeanServiceScratchDataUuid) return;
-                if (characteristic.Uuid != Constants.BeanCharacteristicScratchDataAccelerometerUuid) return;
-
-                _characteristics.Add(characteristic.SubscribeToNotifications().Subscribe(result =>
+                if (characteristic.Service.Uuid == Constants.BeanServiceScratchDataUuid)
                 {
-                    ProcessAccelerometerByteArray(result.Data);
-                }));
+                    if (characteristic.Uuid == Constants.BeanCharacteristicScratchDataAccelerometerUuid)
+                    {
+                        _characteristics.Add(characteristic.SubscribeToNotifications().Subscribe(result =>
+                        {
+                            ProcessAccelerometerByteArray(result.Data);
+                        }));
+                    }
+                    else if (characteristic.Uuid == new Guid())
+                    {
+                        sender = characteristic;
+                    }
+                }
             });
         }
 
@@ -107,8 +118,9 @@ namespace Hackaton.BC
                 Array.Reverse(blueB);
             }
             Debug.WriteLine(red);
-            Debug.WriteLine(redB);
-            App.ConnectedDevice.NativeDevice.BeginReliableWriteTransaction().Write(null, new byte[] { redB[0], greenB[0], blueB[0] });
+            Debug.WriteLine(redB[0]);
+            sendData = new byte[] { redB[0], greenB[0], blueB[0] };
+            sender?.Write(sendData);
         }
     }
 }
