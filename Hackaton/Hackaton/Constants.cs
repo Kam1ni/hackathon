@@ -13,7 +13,7 @@ namespace Hackaton
         /// </summary>
         public static Guid BeanServiceScratchDataUuid = new Guid("a495ff20-c5b1-4b44-b512-1370f02d74de");
         public static Guid BeanCharacteristicScratchDataAccelerometerUuid = new Guid("a495ff21-c5b1-4b44-b512-1370f02d74de");
-        public static Guid BeanCharacteristicScratchDataUUID2 = new Guid("a495ff22-c5b1-4b44-b512-1370f02d74de");
+        public static Guid BeanCharacteristicScratchDataTemperatureUuid = new Guid("a495ff22-c5b1-4b44-b512-1370f02d74de");
         public static Guid BeanCharacteristicScratchDataUUID3 = new Guid("a495ff23-c5b1-4b44-b512-1370f02d74de");
         public static Guid BeanCharacteristicScratchDataUUID4 = new Guid("a495ff24-c5b1-4b44-b512-1370f02d74de");
         public static Guid BeanCharacteristicScratchDataUUID5 = new Guid("a495ff25-c5b1-4b44-b512-1370f02d74de");

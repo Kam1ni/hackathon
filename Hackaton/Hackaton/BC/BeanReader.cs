@@ -20,6 +20,8 @@ namespace Hackaton.BC
 
         private IGattCharacteristic sender;
 
+        public int temperature;
+
         /// <summary>
         /// Read the scratch data from the Bean.
         /// </summary>
@@ -31,13 +33,17 @@ namespace Hackaton.BC
             {
                 if (characteristic.Service.Uuid == Constants.BeanServiceScratchDataUuid)
                 {
-                    if (characteristic.Uuid == Constants.BeanCharacteristicScratchDataAccelerometerUuid)
+                    if (characteristic.Uuid == Constants.BeanCharacteristicScratchDataAccelerometerUuid || characteristic.Uuid == Constants.BeanCharacteristicScratchDataTemperatureUuid)
                     {
                         _characteristics.Add(characteristic.SubscribeToNotifications().Subscribe(result =>
                         {
-                            ProcessAccelerometerByteArray(result.Data);
+                            if (result.Characteristic.Uuid == Constants.BeanCharacteristicScratchDataAccelerometerUuid)
+                                ProcessAccelerometerByteArray(result.Data);
+                            else if (result.Characteristic.Uuid == Constants.BeanCharacteristicScratchDataTemperatureUuid)
+                                temperature =  ProcessTemperatureByteArray(result.Data);
                         }));
                     }
+
                     else if (characteristic.Uuid == new Guid())
                     {
                         sender = characteristic;
@@ -71,6 +77,14 @@ namespace Hackaton.BC
 
             // And insert it into SQLite
             DatabaseManager.Instance.AccelerometerTable.Insert(accelerometer);
+        }
+
+        private int ProcessTemperatureByteArray(byte[] byteArray)
+        {
+            var temperature = new byte[] { byteArray[0], byteArray[1] };
+
+            return BitConverter.ToInt16(temperature, 0) ;
+
         }
 
         /// <summary>

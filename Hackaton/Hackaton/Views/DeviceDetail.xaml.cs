@@ -91,6 +91,7 @@ namespace Hackaton.Views
 
         private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
+            
             App.BeanReader.SendLedValues((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value);
         }
 

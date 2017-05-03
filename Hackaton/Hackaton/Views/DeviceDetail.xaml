@@ -59,6 +59,9 @@
             <Slider x:Name="SliderGreen" Minimum="0" Maximum="255" Value="0"></Slider>
             <Label TextColor="Blue" Text="Blue"></Label>
             <Slider x:Name="SliderBlue" Minimum="0" Maximum="255" Value="0"></Slider>
+
+            <Label Text="Temperature"></Label>
+            <TextCell ></TextCell>
         </StackLayout>
     </ScrollView>
 
