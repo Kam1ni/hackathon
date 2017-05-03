@@ -53,11 +53,11 @@
                 </chart:SfChart.Series>
             </chart:SfChart>
 
-            <Label  TextColor="Red"  Text="Red"></Label>
+            <Label x:Name="SliderRed" TextColor="Red"  Text="Red"></Label>
             <Slider Minimum="0" Maximum="255" Value="0" ></Slider>
-            <Label TextColor="Green"  Text="Green"></Label>
+            <Label x:Name="SliderGreen" TextColor="Green"  Text="Green"></Label>
             <Slider Minimum="0" Maximum="255" Value="0"></Slider>
-            <Label TextColor="Blue" Text="Blue"></Label>
+            <Label x:Name="SliderBlue" TextColor="Blue" Text="Blue"></Label>
             <Slider Minimum="0" Maximum="255" Value="0"></Slider>
         </StackLayout>
     </ScrollView>
